@@ -1,9 +1,9 @@
 /**
  * @file game.hpp
- * @author your name (you@domain.com)
+ * @author Tom Koltunov (tomkoltunov@gmail.com)
  * @brief Headers for 'game' object
- * @version 0.1
- * @date 2023-03-27
+ * @version 0.2
+ * @date 2023-04-13
  * 
  * @copyright Copyright (c) 2023
  * 
@@ -11,6 +11,8 @@
 
 #include "player.hpp"
 #include <iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
@@ -18,8 +20,18 @@ namespace ariel
 {
     class Game
     {
+        Player &_player1;
+        Player &_player2;
+        vector<string> _turns;
+        /*
+        As I explained in the file game.cpp, in order to calculate the win rate of each player it will be more comfortable if each 
+        player will hold the following attribute.
+        */
+        int _draws;
+
         public:
-            Game(Player player1, Player player2);
+            Game(Player &player1, Player &player2); // A constructor for this class which receives the references of the two players 
+                                                    // that play the current game.
             void printLastTurn(); // Print the last turn stats
             void playTurn();
             void playAll(); // Playes the game untill the end
